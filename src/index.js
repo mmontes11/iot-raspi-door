@@ -1,3 +1,12 @@
 import log from './utils/log';
+import onoff from 'onoff';
 
-log.logInfo("iot-raspi-door");
+const gpio = new onoff.Gpio(14, "in", "both");
+
+gpio.watch((err, value) => {
+    if (err) {
+        throw err;
+    } else {
+        log.logInfo(value)
+    }
+});;
