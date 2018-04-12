@@ -1,5 +1,4 @@
 import { Gpio } from 'onoff';
-import _ from "underscore";
 
 export class DoorSensor {
     constructor(gpio, pollInterval) {
