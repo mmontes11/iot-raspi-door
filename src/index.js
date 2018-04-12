@@ -1,8 +1,13 @@
 import log from './utils/log';
-import onoff from 'onoff';
+import { DoorSensor } from "./components/doorSensor";
+import config from "./config/index";
 
-const gpio = new onoff.Gpio(4, "in");
+const doorSensor = new DoorSensor(config.doorSensorGpio, config.doorPollInterval);
 
-setInterval(() => {
-	log.logInfo(gpio.readSync());
-}, 100);
+doorSensor.onChanged((isOpened) => {
+	log.logInfo(`Door ${isOpened ? "opened" : "closed"}`);
+});
+
+process.on('SIGINT', function () {
+	doorSensor.unexport();
+});

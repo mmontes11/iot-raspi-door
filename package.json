@@ -40,7 +40,6 @@
     "@mmontes11/iot-client": "^1.0.5",
     "cross-env": "^5.1.4",
     "onoff": "^1.2.0",
-    "underscore": "^1.8.3",
     "winston": "^2.4.1"
   },
   "devDependencies": {
