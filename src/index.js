@@ -8,6 +8,7 @@ doorSensor.onChanged((isOpened) => {
 	log.logInfo(`Door ${isOpened ? "opened" : "closed"}`);
 });
 
-process.on('SIGINT', function () {
-	doorSensor.unexport();
+process.on('SIGINT', () => {
+	doorSensor.gpio.unexport();
+	process.exit();
 });
