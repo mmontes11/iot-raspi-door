@@ -1,14 +1,15 @@
 import { Gpio } from 'onoff';
+import { Component } from "./component";
 
-export class DoorSensor {
-    constructor(gpio, pollInterval) {
-        this.gpio = new Gpio(gpio, "in");
+export class DoorSensor extends Component {
+    constructor(gpioPin, pollInterval) {
+        super(new Gpio(gpioPin, "in"));
         this.pollInterval = pollInterval;
         this.lastGpioValue = undefined;
     }
     onChanged(cb) {
         setInterval(() => {
-            const gpioValue = this.gpio.readSync();
+            const gpioValue = this.gpioPin.readSync();
             if (this.lastGpioValue === undefined || this.lastGpioValue !== gpioValue) {
                 cb(DoorSensor._isOpened(gpioValue));
             }

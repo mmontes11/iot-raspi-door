@@ -3,8 +3,8 @@ import sleep from "sleep";
 import log from '../utils/log';
 
 export class LDR {
-    constructor(gpio, darkRcTimeThreeshold) {
-        this.gpio = gpio;
+    constructor(gpioPin, darkRcTimeThreeshold) {
+        this.gpioPin = gpioPin;
         this.darkRcTimeThreeshold = darkRcTimeThreeshold;
     }
     isDark() {
@@ -14,10 +14,10 @@ export class LDR {
     }
     _rcTime (){
         let count = 0;
-        let gpio = new Gpio(this.gpio, "out");
+        let gpio = new Gpio(this.gpioPin, "out");
         gpio.writeSync(0);
         sleep.usleep(100000);
-        gpio = new Gpio(this.gpio, "in", "both");
+        gpio = new Gpio(this.gpioPin, "in", "both");
         while (gpio.readSync() === 0) {
             count++;
         }

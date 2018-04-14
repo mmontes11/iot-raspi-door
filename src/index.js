@@ -32,8 +32,8 @@ doorSensor.onChanged((isOpened) => {
 });
 
 process.on('SIGINT', () => {
-	doorSensor.gpio.unexport();
-	ledOpened.gpio.unexport();
-	ledClosed.gpio.unexport();
+	doorSensor.unexport();
+	ledOpened.unexport();
+	ledClosed.unexport();
 	process.exit();
 });

@@ -1,13 +1,14 @@
 import { Gpio } from "onoff";
+import { Component } from "./component";
 
-export class LED {
-    constructor(gpio) {
-        this.gpio = new Gpio(gpio, "out");
+export class LED extends Component {
+    constructor(gpioPin) {
+        super(new Gpio(gpioPin, "out"));
     }
     turnOn() {
-        this.gpio.writeSync(1);
+        this.gpioPin.writeSync(1);
     }
     turnOff() {
-        this.gpio.writeSync(0);
+        this.gpioPin.writeSync(0);
     }
 }
