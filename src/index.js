@@ -9,7 +9,7 @@ const ldr = new LDR(config.ldrGpio, config.ldrDarkRcTimeThreeshold);
 const ledOpened = new LED(config.ledOpenedGpio);
 const ledClosed = new LED(config.ledClosedGpio);
 
-doorSensor.onChanged((isOpened) => {
+doorSensor.onChange((isOpened) => {
 	log.logInfo(`Door sensor: ${isOpened ? "opened" : "closed"}`);
 	const isDark = ldr.isDark();
 	log.logInfo(`LDR: ${isDark ? "dark" : "light"}`);

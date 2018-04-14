@@ -7,7 +7,7 @@ export class DoorSensor extends Component {
         this.pollInterval = pollInterval;
         this.lastGpioValue = undefined;
     }
-    onChanged(cb) {
+    onChange(cb) {
         setInterval(() => {
             const gpioValue = this.gpioPin.readSync();
             if (this.lastGpioValue === undefined || this.lastGpioValue !== gpioValue) {
