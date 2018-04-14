@@ -3,9 +3,10 @@ import sleep from "sleep";
 import log from '../utils/log';
 
 export class LDR {
-    constructor(gpioPin, darkRcTimeThreeshold) {
+    constructor(gpioPin, darkRcTimeThreeshold, rcTimeMaxValue) {
         this.gpioPin = gpioPin;
         this.darkRcTimeThreeshold = darkRcTimeThreeshold;
+        this.rcTimeMaxValue = rcTimeMaxValue;
     }
     isDark() {
         const rcTime = this._rcTime();
@@ -13,15 +14,15 @@ export class LDR {
         return rcTime >= this.darkRcTimeThreeshold;
     }
     _rcTime (){
-        let count = 0;
+        let time = 0;
         let gpio = new Gpio(this.gpioPin, "out");
         gpio.writeSync(0);
         sleep.usleep(100000);
         gpio = new Gpio(this.gpioPin, "in", "both");
-        while (gpio.readSync() === 0) {
-            count++;
+        while (gpio.readSync() === 0 && time < this.rcTimeMaxValue) {
+            time++;
         }
         gpio.unexport();
-        return count;
+        return time;
     }
 }

@@ -5,7 +5,7 @@ import { LED } from "./components/led";
 import config from "./config/index";
 
 const doorSensor = new DoorSensor(config.doorSensorGpio, config.doorSensorPollInterval);
-const ldr = new LDR(config.ldrGpio, config.ldrDarkRcTimeThreeshold);
+const ldr = new LDR(config.ldrGpio, config.ldrDarkRcTimeThreeshold, config.ldrRcTimeMaxValue);
 const ledOpened = new LED(config.ledOpenedGpio);
 const ledClosed = new LED(config.ledClosedGpio);
 
