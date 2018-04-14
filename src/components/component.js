@@ -1,8 +1,8 @@
 export class Component {
     constructor(gpio) {
-        this.gpioPin = gpio;
+        this.gpio = gpio;
     }
     unexport() {
-        this.gpioPin.unexport();
+        this.gpio.unexport();
     }
 }

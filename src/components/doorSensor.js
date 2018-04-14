@@ -9,7 +9,7 @@ export class DoorSensor extends Component {
     }
     onChange(cb) {
         setInterval(() => {
-            const gpioValue = this.gpioPin.readSync();
+            const gpioValue = this.gpio.readSync();
             if (this.lastGpioValue === undefined || this.lastGpioValue !== gpioValue) {
                 cb(DoorSensor._isOpened(gpioValue));
             }

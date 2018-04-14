@@ -7,5 +7,9 @@ export default {
     ldrRcTimeMaxValue: process.env.LDR_RC_TIME_MAX_VALUE,
     ledOpenedGpio: process.env.LED_OPENED_GPIO,
     ledClosedGpio: process.env.LED_CLOSED_GPIO,
+    ledRequestSuccessGpio: process.env.LED_REQUEST_SUCCESS_GPIO,
+    ledRequestErrorGpio: process.env.LED_REQUEST_ERROR_GPIO,
+    ledBlinkDurationInMs: process.env.LED_BLINK_DURATION_IN_MS,
+    ledBlinkTotalPeriodInMs: process.env.LED_BLINK_TOTAL_IN_MS,
     debug: process.env.IOT_DEBUG
 };
