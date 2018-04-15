@@ -1,13 +1,12 @@
 import os from 'os';
-import { LocationHandler } from '../handlers/locationHandler';
 import config from '../config/index';
 
 export class Thing {
-    constructor(supportedObservationTypes) {
+    constructor(geometry, ...supportedObservationTypes) {
         this.topic = config.topic;
-        this.supportedObservationTypes = supportedObservationTypes;
+        this.geometry = geometry;
         this.name = os.hostname();
-        this.geometry = LocationHandler.getCurrentLocation()
+        this.supportedObservationTypes = supportedObservationTypes;
     }
     toJSON() {
         return {

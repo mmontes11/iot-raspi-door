@@ -2,7 +2,11 @@ import log from './utils/log';
 import { DoorSensor } from "./components/doorSensor";
 import { LDR } from "./components/ldr";
 import { LED } from "./components/led";
+import { LocationHandler } from "./handlers/locationHandler";
 import { Thing } from './models/thing';
+import { EventHandler } from "./handlers/eventHandler";
+import iotClient from "./lib/iotClient";
+import constants from "./utils/constants";
 import config from "./config/index";
 
 const doorSensor = new DoorSensor(config.doorSensorGpio, config.doorSensorPollInterval);
@@ -18,8 +22,10 @@ const componentsToUnexport = [
     ledRequestSuccess,
     ledRequestError
 ];
+const thing = new Thing(LocationHandler.getCurrentLocation(), constants.doorOpenedEventType, constants.doorClosedEventType);
+const eventHandler = new EventHandler(iotClient, constants.doorOpenedEventType, constants.doorClosedEventType, thing);
 
-doorSensor.onChange((isOpened) => {
+doorSensor.onChange(async (isOpened) => {
     log.logInfo(`Door sensor: ${isOpened ? "opened" : "closed"}`);
     const isDark = ldr.isDark();
     log.logInfo(`LDR: ${isDark ? "dark" : "light"}`);
@@ -33,13 +39,21 @@ doorSensor.onChange((isOpened) => {
     if (isOpened) {
         ledOpened.turnOn();
         ledClosed.turnOff();
-        //TODO: Send door-opened event
-        ledRequestSuccess.blink();
+        try {
+            await eventHandler.sendDoorOpenedEvent();
+            ledRequestSuccess.blink();
+        } catch (err) {
+            ledRequestError.blink()
+        }
     } else {
         ledOpened.turnOff();
         ledClosed.turnOn();
-        //TODO: Send door-closed event
-        ledRequestError.blink();
+        try {
+            await eventHandler.sendDoorClosedEvent();
+            ledRequestSuccess.blink();
+        } catch (err) {
+            ledRequestError.blink()
+        }
     }
 });
 

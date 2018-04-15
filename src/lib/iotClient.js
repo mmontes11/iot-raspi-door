@@ -6,7 +6,8 @@ const iotClient = new IoTClient({
     basicAuthUsername: config.basicAuthUsername,
     basicAuthPassword: config.basicAuthPassword,
     username: config.username,
-    password: config.password
+    password: config.password,
+    debug: config.debugRequests
 });
 
 export default iotClient;

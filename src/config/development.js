@@ -13,11 +13,12 @@ export default {
     ledRequestSuccessGpio: 20,
     ledRequestErrorGpio: 21,
     ledBlinkDurationInMs: 100,
-    ledBlinkTotalPeriodInMs: 5000,
-    serverUrl: 'http://192.168.0.36:9000/api',
+    ledBlinkTotalPeriodInMs: 2000,
+    serverUrl: 'http://192.168.0.36:9000',
     basicAuthUsername: 'admin',
     basicAuthPassword: 'admin',
     username: 'admin',
     password: 'aA12345678&',
-    debug: true
+    debug: true,
+    debugRequests: false
 };
