@@ -1,5 +1,8 @@
 export default {
     env: 'development',
+    longitude: -8.40,
+    latitude: 43.40,
+    topic: 'home/raspi/door',
     doorSensorGpio: 4,
     doorSensorPollInterval: 1000,
     ldrGpio: 17,
@@ -11,5 +14,10 @@ export default {
     ledRequestErrorGpio: 21,
     ledBlinkDurationInMs: 100,
     ledBlinkTotalPeriodInMs: 5000,
+    serverUrl: 'http://192.168.0.36:9000/api',
+    basicAuthUsername: 'admin',
+    basicAuthPassword: 'admin',
+    username: 'admin',
+    password: 'aA12345678&',
     debug: true
 };

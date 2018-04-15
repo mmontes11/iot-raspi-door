@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/mmontes11/iot-raspi-door#readme",
   "dependencies": {
-    "@mmontes11/iot-client": "^1.0.5",
+    "@mmontes11/iot-client": "^1.0.7",
     "cross-env": "^5.1.4",
     "onoff": "^1.2.0",
     "sleep": "^5.1.1",

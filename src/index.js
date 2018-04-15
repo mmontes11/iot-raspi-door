@@ -2,6 +2,7 @@ import log from './utils/log';
 import { DoorSensor } from "./components/doorSensor";
 import { LDR } from "./components/ldr";
 import { LED } from "./components/led";
+import { Thing } from './models/thing';
 import config from "./config/index";
 
 const doorSensor = new DoorSensor(config.doorSensorGpio, config.doorSensorPollInterval);
