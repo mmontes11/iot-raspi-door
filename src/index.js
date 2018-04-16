@@ -2,8 +2,9 @@ import log from './utils/log';
 import { DoorSensor } from "./components/doorSensor";
 import { LDR } from "./components/ldr";
 import { LED } from "./components/led";
-import { LocationHandler } from "./handlers/locationHandler";
 import { Thing } from './models/thing';
+import { YeelightHandler } from "./handlers/yeelightHandler"
+import { LocationHandler } from "./handlers/locationHandler";
 import { EventHandler } from "./handlers/eventHandler";
 import iotClient from "./lib/iotClient";
 import constants from "./utils/constants";
@@ -23,6 +24,7 @@ const componentsToUnexport = [
     ledRequestError
 ];
 const thing = new Thing(LocationHandler.getCurrentLocation(), constants.doorOpenedEventType, constants.doorClosedEventType);
+const yeelightHandler = new YeelightHandler(config.yeelightDeviceId, config.yeelightBrightnessPercentage, config.transitionSpeedInMs);
 const eventHandler = new EventHandler(iotClient, constants.doorOpenedEventType, constants.doorClosedEventType, thing);
 
 doorSensor.onChange(async (isOpened) => {
@@ -30,11 +32,9 @@ doorSensor.onChange(async (isOpened) => {
     const isDark = ldr.isDark();
     log.logInfo(`LDR: ${isDark ? "dark" : "light"}`);
     if (isOpened && isDark) {
-        //TODO: Turn the light bulb on
-        log.logInfo(`Light bulb: on`);
+        yeelightHandler.turnOn();
     } else {
-        //TODO: Turn the light bulb off
-        log.logInfo(`Light bulb: off`);
+        yeelightHandler.turnOff();
     }
     if (isOpened) {
         ledOpened.turnOn();
@@ -56,6 +56,8 @@ doorSensor.onChange(async (isOpened) => {
         }
     }
 });
+
+yeelightHandler.listen();
 
 process.on('SIGINT', () => {
     componentsToUnexport.forEach((component) => component.unexport());
