@@ -26,13 +26,18 @@ export class YeelightHandler {
         this.y.listen();
     }
     turnOn() {
-        this.y.setPower(this.device, true, this.transitionSpeedInMs);
-        this.y.setBrightness(this.device, this.brightnessPercentage, this.transitionSpeedInMs);
-        YeelightHandler._log(`on`);
+        if (this.device !== undefined) {
+            this.y.setPower(this.device, true, this.transitionSpeedInMs);
+            this.y.setBrightness(this.device, this.brightnessPercentage, this.transitionSpeedInMs);
+            YeelightHandler._log(`on`);
+        }
+
     }
     turnOff() {
-        this.y.setPower(this.device, false, this.transitionSpeedInMs);
-        YeelightHandler._log(`off`);
+        if (this.device !== undefined) {
+            this.y.setPower(this.device, false, this.transitionSpeedInMs);
+            YeelightHandler._log(`off`);
+        }
     }
     static _log(message) {
         log.logInfo(`Yeelight: ${message}`);
