@@ -17,7 +17,7 @@ export default {
     yeelightDeviceId: "0x00000000049e4ae4",
     yeelightBrightnessPercentage: 100,
     yeelightTransitionSpeedInMs: 300,
-    serverUrl: 'http://192.168.0.36:9000',
+    serverUrl: 'http://192.168.0.100:9000',
     basicAuthUsername: 'admin',
     basicAuthPassword: 'admin',
     username: 'admin',
