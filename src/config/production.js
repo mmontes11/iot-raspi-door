@@ -22,6 +22,6 @@ export default {
     basicAuthPassword: process.env.IOT_SERVER_BASIC_AUTH_PASSWORD,
     username: process.env.IOT_SERVER_USERNAME,
     password: process.env.IOT_SERVER_PASSWORD,
-    debug: process.env.IOT_DEBUG,
-    debugRequests: process.env.IOT_DEBUG_REQUESTS
+    debug: process.env.IOT_DEBUG === 'true',
+    debugRequests: process.env.IOT_DEBUG_REQUESTS === 'true'
 };
