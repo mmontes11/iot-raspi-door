@@ -16,6 +16,8 @@ For storing event data, it consumes [IoT server](https://github.com/mmontes11/io
 
 ### Wiring
 
+![wiring](https://raw.githubusercontent.com/mmontes11/iot-raspi-door/develop/wiring/wiring.png)
+
 ### Run in development
 
 ```bash
