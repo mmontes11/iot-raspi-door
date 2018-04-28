@@ -18,13 +18,19 @@ For storing event data, it consumes [IoT server](https://github.com/mmontes11/io
 
 ![wiring](https://raw.githubusercontent.com/mmontes11/iot-raspi-door/develop/wiring/wiring.png)
 
-### Run in development
+### Development
 
 ```bash
 $ npm start
 ```
 
-### Build image
+### Lint
+
+```bash
+$ npm run lint
+```
+
+### Build Image
 
 ```bash
 $ npm run build
@@ -36,7 +42,7 @@ $ docker build -t iot-raspi-door .
 Image available on [Docker Hub](https://hub.docker.com/r/mmontes11/iot-raspi-door/)
 
 
-### Run in production
+### Production
 
 Configuration:
 
