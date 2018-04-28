@@ -1,21 +1,20 @@
-import winston from '../lib/winston';
-import _ from 'underscore';
-import config from '../config/index';
+import winston from "../lib/winston";
+import config from "../config/index";
 
 class Log {
-    constructor(debug) {
-        this.debug = debug;
+  constructor(debug) {
+    this.debug = debug;
+  }
+  logInfo(message) {
+    if (this.debug) {
+      winston.info(message);
     }
-    logInfo(message) {
-        if (this.debug) {
-            winston.info(message);
-        }
+  }
+  logError(message) {
+    if (this.debug) {
+      winston.error(message);
     }
-    logError(message) {
-        if (this.debug) {
-            winston.error(message);
-        }
-    }
+  }
 }
 
 const log = new Log(config.debug);

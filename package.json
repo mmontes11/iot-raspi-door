@@ -4,10 +4,12 @@
   "description": "IoT container for Raspberry Pi used to detect door opening and turn on the light if needed Edit",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development nodemon src/index.js --exec babel-node",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist/*",
-    "prebuild": "npm run clean",
+    "prebuild": "npm run clean && npm run lint",
     "build": "babel -d dist/ src/",
     "production": "cross-env NODE_ENV=production node index.js"
   },
@@ -39,7 +41,6 @@
   "dependencies": {
     "@mmontes11/iot-client": "^1.0.9",
     "cross-env": "^5.1.4",
-    "mixin": "^0.2.0",
     "node-yeelight": "^1.0.6",
     "onoff": "^1.2.0",
     "sleep": "^5.1.1",
@@ -50,6 +51,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
+    "eslint-config-mmontes11-node": "^1.0.5",
     "nodemon": "^1.14.8"
   }
 }

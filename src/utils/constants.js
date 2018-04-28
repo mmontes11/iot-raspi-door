@@ -1,4 +1,4 @@
 export default {
-    doorOpenedEventType: "door-opened",
-    doorClosedEventType: "door-closed"
+  doorOpenedEventType: "door-opened",
+  doorClosedEventType: "door-closed",
 };
