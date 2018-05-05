@@ -1,6 +1,6 @@
 FROM node:8
 
-ENV WORKDIR /usr/src/iot-worker
+ENV WORKDIR /usr/src/iot-raspi-door
 
 RUN mkdir ${WORKDIR}
 
