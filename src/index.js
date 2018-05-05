@@ -35,7 +35,12 @@ const yeelightHandler = new YeelightHandler(
   config.yeelightBrightnessPercentage,
   config.transitionSpeedInMs,
 );
-const eventHandler = new EventHandler(iotClient, constants.doorOpenedEventType, constants.doorClosedEventType, thing);
+const eventHandler = new EventHandler(
+  iotClient,
+  constants.doorOpenedEventType,
+  constants.doorClosedEventType,
+  thing.toJSON(),
+);
 
 doorSensor.onChange(async isOpened => {
   log.logInfo(`Door sensor: ${isOpened ? "opened" : "closed"}`);
