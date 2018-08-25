@@ -5,6 +5,7 @@ export default {
   topic: process.env.RASPI_TOPIC,
   doorSensorGpio: Number(process.env.DOOR_SENSOR_GPIO),
   doorSensorPollInterval: Number(process.env.DOOR_SENSOR_POLL_INTERVAL),
+  luminosityPollInterval: Number(process.env.LUMINOSITY_POLL_INTERVAL),
   ldrGpio: Number(process.env.LDR_GPIO),
   ldrDarkRcTimeThreeshold: Number(process.env.LDR_DARK_RC_TIME_THREESHOLD),
   ldrRcTimeMaxValue: Number(process.env.LDR_RC_TIME_MAX_VALUE),

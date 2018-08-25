@@ -5,6 +5,7 @@ export default {
   topic: "home/raspi/door",
   doorSensorGpio: 4,
   doorSensorPollInterval: 1000,
+  luminosityPollInterval: 5000,
   ldrGpio: 17,
   ldrDarkRcTimeThreeshold: 20000,
   ldrRcTimeMaxValue: 5000000,
