@@ -1,8 +1,9 @@
 export class EventHandler {
-  constructor(iotClient, doorOpenedEventType, doorClosedEventType, thing) {
+  constructor(iotClient, doorOpenedEventType, doorClosedEventType, luminosityChangedEventType, thing) {
     this.iotClient = iotClient;
     this.doorOpenedEventType = doorOpenedEventType;
     this.doorClosedEventType = doorClosedEventType;
+    this.luminosityChangedEventType = luminosityChangedEventType;
     this.thing = thing;
   }
   sendDoorOpenedEvent() {
@@ -17,6 +18,15 @@ export class EventHandler {
     return this.iotClient.eventService.create({
       event: {
         type: this.doorClosedEventType,
+      },
+      thing: this.thing,
+    });
+  }
+  sendLuminosityChangedEvent(isDark) {
+    return this.iotClient.eventService.create({
+      event: {
+        type: this.luminosityChangedEventType,
+        isDark,
       },
       thing: this.thing,
     });
