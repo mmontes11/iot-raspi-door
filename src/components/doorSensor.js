@@ -16,7 +16,7 @@ export class DoorSensor extends Component {
       this.lastGpioValue = gpioValue;
     }, this.pollInterval);
   }
-  static isOpened() {
+  isOpened() {
     const gpioValue = this.gpio.readSync();
     return DoorSensor._isOpened(gpioValue);
   }
