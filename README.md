@@ -5,7 +5,7 @@
 IoT container for Raspberry Pi that handles door opening and luminosity. 
 For storing event data, it consumes [IoT server](https://github.com/mmontes11/iot-server) REST API via [IoT client](https://github.com/mmontes11/iot-client).
 
-### Components
+### Features
 
 * Detect door opening and turn on the light if it's dark.
 * Detect door closing and and turn off the light.
