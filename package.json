@@ -1,7 +1,7 @@
 {
   "name": "iot-raspi-door",
   "version": "1.0.1",
-  "description": "IoT container for Raspberry Pi used to detect door opening and turn on the light if needed Edit",
+  "description": "IoT container for Raspberry Pi that handles door opening and luminosity",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon src/index.js --exec babel-node",
