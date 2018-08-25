@@ -38,7 +38,7 @@ export class EventHandler {
     const request = this.iotClient.eventService.create({
       event: {
         type: this.luminosityChangedEventType,
-        isDark,
+        value: !isDark,
       },
       thing: this.thing,
     });
