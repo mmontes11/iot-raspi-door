@@ -4,6 +4,7 @@ import { LDR } from "./components/ldr";
 import { LED } from "./components/led";
 import { Thing } from "./models/thing";
 import { YeelightHandler } from "./handlers/yeelightHandler";
+import { LuminosityHandler } from "./handlers/luminosityHandler";
 import { LocationHandler } from "./handlers/locationHandler";
 import { EventHandler } from "./handlers/eventHandler";
 import iotClient from "./lib/iotClient";
@@ -35,12 +36,15 @@ const yeelightHandler = new YeelightHandler(
   config.yeelightBrightnessPercentage,
   config.transitionSpeedInMs,
 );
+const luminosityHandler = new LuminosityHandler(ldr, config.luminosityPollInterval);
 const eventHandler = new EventHandler(
   iotClient,
   constants.doorOpenedEventType,
   constants.doorClosedEventType,
   thing.toJSON(),
 );
+
+yeelightHandler.listen();
 
 doorSensor.onChange(async isOpened => {
   log.logInfo(`Door sensor: ${isOpened ? "opened" : "closed"}`);
@@ -72,7 +76,14 @@ doorSensor.onChange(async isOpened => {
   }
 });
 
-yeelightHandler.listen();
+luminosityHandler.onChange(isDark => {
+  log.logInfo(`Luminosity changed: ${isDark ? "dark" : "light"}`);
+  if (isDark) {
+    yeelightHandler.turnOn();
+  } else {
+    yeelightHandler.turnOff();
+  }
+});
 
 process.on("SIGINT", () => {
   componentsToUnexport.forEach(component => component.unexport());
