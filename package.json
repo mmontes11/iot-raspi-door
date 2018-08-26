@@ -1,6 +1,6 @@
 {
   "name": "iot-raspi-door",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "IoT container for Raspberry Pi that handles door opening and luminosity",
   "main": "index.js",
   "scripts": {

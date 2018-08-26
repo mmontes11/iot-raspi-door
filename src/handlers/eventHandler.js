@@ -1,17 +1,9 @@
 export class EventHandler {
-  constructor(
-    iotClient,
-    doorOpenedEventType,
-    doorClosedEventType,
-    luminosityChangedEventType,
-    thing,
-    onSuccess,
-    onError,
-  ) {
+  constructor(iotClient, doorOpenedEventType, doorClosedEventType, luminosityEventType, thing, onSuccess, onError) {
     this.iotClient = iotClient;
     this.doorOpenedEventType = doorOpenedEventType;
     this.doorClosedEventType = doorClosedEventType;
-    this.luminosityChangedEventType = luminosityChangedEventType;
+    this.luminosityEventType = luminosityEventType;
     this.thing = thing;
     this.onSuccess = onSuccess;
     this.onError = onError;
@@ -34,10 +26,10 @@ export class EventHandler {
     });
     return this._sendRequest(request);
   }
-  sendLuminosityChangedEvent(isDark) {
+  sendLuminositydEvent(isDark) {
     const request = this.iotClient.eventService.create({
       event: {
-        type: this.luminosityChangedEventType,
+        type: this.luminosityEventType,
         value: !isDark,
       },
       thing: this.thing,

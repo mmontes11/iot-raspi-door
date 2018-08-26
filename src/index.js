@@ -30,7 +30,7 @@ const thing = new Thing(
   LocationHandler.getCurrentLocation(),
   constants.doorOpenedEventType,
   constants.doorClosedEventType,
-  constants.luminosityChangedEventType,
+  constants.luminosityEventType,
 );
 const yeelightHandler = new YeelightHandler(
   config.yeelightDeviceId,
@@ -42,7 +42,7 @@ const eventHandler = new EventHandler(
   iotClient,
   constants.doorOpenedEventType,
   constants.doorClosedEventType,
-  constants.luminosityChangedEventType,
+  constants.luminosityEventType,
   thing.toJSON(),
   () => ledRequestSuccess.blink(),
   () => ledRequestError.blink(),
@@ -72,7 +72,7 @@ doorSensor.onChange(async isOpened => {
 
 luminosityHandler.onChange(async isDark => {
   log.logInfo(`Luminosity changed: ${isDark ? "dark" : "light"}`);
-  await eventHandler.sendLuminosityChangedEvent(isDark);
+  await eventHandler.sendLuminositydEvent(isDark);
   if (doorSensor.isOpened()) {
     if (isDark) {
       yeelightHandler.turnOn();
