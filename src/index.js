@@ -71,9 +71,9 @@ doorSensor.onChange(async isOpened => {
 });
 
 luminosityHandler.onChange(async isDark => {
-  log.logInfo(`Luminosity: ${isDark ? "dark" : "light"}`);
+  log.logInfo(`Luminosity changed: ${isDark ? "dark" : "light"}`);
   await eventHandler.sendLuminositydEvent(isDark);
-  if (DoorSensor.isOpened()) {
+  if (doorSensor.isOpened()) {
     if (isDark) {
       yeelightHandler.turnOn();
     } else {

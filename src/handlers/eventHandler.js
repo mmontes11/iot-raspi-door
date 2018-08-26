@@ -30,7 +30,7 @@ export class EventHandler {
     const request = this.iotClient.eventService.create({
       event: {
         type: this.luminosityEventType,
-        isDark,
+        value: !isDark,
       },
       thing: this.thing,
     });
