@@ -9,31 +9,34 @@ export class EventHandler {
     this.onError = onError;
   }
   sendDoorOpenedEvent() {
-    const request = () => this.iotClient.eventService.create({
-      event: {
-        type: this.doorOpenedEventType,
-      },
-      thing: this.thing,
-    });
+    const request = () =>
+      this.iotClient.eventService.create({
+        event: {
+          type: this.doorOpenedEventType,
+        },
+        thing: this.thing,
+      });
     return this._sendRequest(request);
   }
   sendDoorClosedEvent() {
-    const request = () => this.iotClient.eventService.create({
-      event: {
-        type: this.doorClosedEventType,
-      },
-      thing: this.thing,
-    });
+    const request = () =>
+      this.iotClient.eventService.create({
+        event: {
+          type: this.doorClosedEventType,
+        },
+        thing: this.thing,
+      });
     return this._sendRequest(request);
   }
   sendLuminositydEvent(isDark) {
-    const request = () => this.iotClient.eventService.create({
-      event: {
-        type: this.luminosityEventType,
-        value: !isDark,
-      },
-      thing: this.thing,
-    });
+    const request = () =>
+      this.iotClient.eventService.create({
+        event: {
+          type: this.luminosityEventType,
+          value: !isDark,
+        },
+        thing: this.thing,
+      });
     return this._sendRequest(request);
   }
   async _sendRequest(request) {
