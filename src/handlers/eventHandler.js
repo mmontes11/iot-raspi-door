@@ -9,7 +9,7 @@ export class EventHandler {
     this.onError = onError;
   }
   sendDoorOpenedEvent() {
-    const request = this.iotClient.eventService.create({
+    const request = () => this.iotClient.eventService.create({
       event: {
         type: this.doorOpenedEventType,
       },
@@ -18,7 +18,7 @@ export class EventHandler {
     return this._sendRequest(request);
   }
   sendDoorClosedEvent() {
-    const request = this.iotClient.eventService.create({
+    const request = () => this.iotClient.eventService.create({
       event: {
         type: this.doorClosedEventType,
       },
@@ -27,7 +27,7 @@ export class EventHandler {
     return this._sendRequest(request);
   }
   sendLuminositydEvent(isDark) {
-    const request = this.iotClient.eventService.create({
+    const request = () => this.iotClient.eventService.create({
       event: {
         type: this.luminosityEventType,
         value: !isDark,
