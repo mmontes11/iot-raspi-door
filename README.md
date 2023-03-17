@@ -51,9 +51,7 @@ Image available on [Docker Hub](https://hub.docker.com/r/mmontes11/iot-raspi-doo
 ### Production
 
 Configuration:
-
-* [.env](https://github.com/mmontes11/iot-raspi-door/blob/develop/.env)
-
+* Create a `.env` file with this [variables](https://github.com/mmontes11/iot-raspi-door/blob/develop/src/config/production.js)
 
 ```bash
 $ ./run-production.sh
